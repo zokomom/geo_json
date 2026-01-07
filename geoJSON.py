@@ -1,4 +1,4 @@
-import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.parse
 import json
 
 serviceurl = 'http://py4e-data.dr-chuck.net/json?'
@@ -22,10 +22,10 @@ while True:
         js=None
         
     print(json.dumps(js, indent=4))
-    
-    if js and 'results' in js:
+    if js and 'results' in js and len(js['results']) > 0:
         place_id = js['results'][0]['place_id']
-        print('Place ID: ', place_id)
+        print('Place ID:', place_id)
     else:
         print('No place ID found')
+        break
 
